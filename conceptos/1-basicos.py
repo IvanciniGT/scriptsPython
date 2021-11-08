@@ -160,8 +160,6 @@ def mifuncion(arg1, arg2, arg3="Tengo valor por defecto", arg4="Yo también teng
     print(arg4)
 
 mifuncion("HOLA","AMIGO",arg4="COMO",arg3="ESTAS?")
-# BUCLES
-
 
 def doblar(numero):
     return numero*2
@@ -175,4 +173,21 @@ print(el_doble_de_5)
 resultado= doblar(5) + 7
 print(resultado)
 
-# BASH
+# Bucle WHILE. Es lo mismo que un if.
+# Solo que la condicion no se evalua solamente 1 vez... Sino que se reevalua cada vez que acaba de ejecutarse el codigo asociado
+
+edad=10
+if edad>5:
+    print("La edad es mayor que 5. De hecho vale: "+str(edad) )
+
+while edad>5:
+    print("La edad es mayor que 5. De hecho vale: "+str(edad) )
+    edad=edad-1
+
+edad=10
+while True:
+    print("La edad es mayor que 5. De hecho vale: "+str(edad) )
+    edad=edad-1
+    if edad<5:
+        break
+

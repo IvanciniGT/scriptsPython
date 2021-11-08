@@ -63,4 +63,71 @@ tuplaA=tuple(lista_tuplaA)
 
 print(lista_tuplaA)
 print(tuplaA)
+
+# Recuperar uno a uno los distintos valores que tengo en una lista o tupla y hacer algo con ellos
+tuplaA=    (1,2,3,4,5)
+
+for numero in tuplaA :
+    print(numero)
+
+for numero in range(0,100) :
+    print(numero)
+
+for numero in range(0,100,2) :
+    print(numero)
+
+for numero in range(100,-100,-2) :
+    print(numero)
+
+for letra in "HOLA AMIGO":
+    print(letra)
+    
+
+def maximo(numero1, numero2):    #   4,6      -> 6 es el valor maximo, y que es el numero2 el que tiene ese valor.
+                                # 1, si el primer numero es el maximo. 2, si es el segundo el maximo. Un 0 si son iguales
+                                # Pero ademas quiero el valor maximo
+    if numero1 > numero2:
+        return (1,numero1)
+    elif numero1 == numero2:
+        return (0,numero1)
+    else:
+        return (2,numero2)
+
+cual_de_los_dos_es_el_mayor, es_valor_mayor=maximo(5,5)
+print("El maximo es: "+ str( es_valor_mayor ))
+print("Y lo contiene el número: "+ ( "ambos son iguales" if cual_de_los_dos_es_el_mayor==0 else str(cual_de_los_dos_es_el_mayor) ))
+
+# Desectructuración de una tupla
+a,b,c=(1,2,3)
+print(a)
+print(b)
+print(c)
+
+# VALOR SI CONDICION SINO OTRO_VALOR
 # Diccionarios
+midiccionario={"clave1":"Valor1", "clave2": "Valor2"}
+
+print(    midiccionario["clave1"]        )
+print(    midiccionario.get("clave3")    )
+
+#midiccionario={0:"Valor1", 1: "Valor2"}
+
+#print(    midiccionario[0]    )
+#print("Hasta luego")
+
+midiccionario['clave1']= "NUEVO VALOR"
+midiccionario['clave3']= "OTRO NUEVO VALOR"
+print(midiccionario)
+
+
+for clave in midiccionario:
+    print(clave)
+    print(midiccionario[clave])
+
+
+for clave,valor in midiccionario.items():
+    print(clave)
+    print(valor)
+
+
+print(midiccionario.items())
