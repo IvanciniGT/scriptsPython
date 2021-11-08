@@ -104,5 +104,32 @@ bool("True")
 
 print(  "Dentro de 10 años, tendrás: " + str(     int(edad) + 10   ) )
 
+# Programación imperativa
+
+# Expresiones de control de flujo:
+# if CONDICION:
+# El codigo que pongamos dentro del if, se ejecutará solamente si la condicion es verdadera: TRUE
+
+edad=int(edad)
+if edad > 65:
+    print("Eres muy muy mayor de edad")
+elif edad > 18:
+    print("Eres mayor de edad")
+else:
+    # Esto se ejecuta si no se cumple la condicion del if
+    print("Eres menor de edad")
+
+print("Acabamos")
+
+# Por cuantos caminos diferentes puede entrar el codigo:
+# 3   <     Complejidad ciclomatica: Numero de caminos diferentes que puede tomar un codigo al ejecutarse
+#                                   PRUEBAS DE SOFTWARE: Al menos cuantas pruebas debo realizar a mi programa? 
+#                                                        Tantas como su complejidad ciclomatica
+# > 18 y > 65
+# > 18 y < 65
+# <= 18
+
+# BUCLES
+
 
 
