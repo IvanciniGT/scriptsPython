@@ -101,6 +101,8 @@ str(32)
 int("32")
 float("43.8")
 bool("True")
+#list()
+#tuple()
 
 print(  "Dentro de 10 años, tendrás: " + str(     int(edad) + 10   ) )
 
@@ -121,6 +123,8 @@ else:
 
 print("Acabamos")
 
+    # VALOR_VERDADERO if CONDICION else VALOR_SI_NO
+
 # Por cuantos caminos diferentes puede entrar el codigo:
 # 3   <     Complejidad ciclomatica: Numero de caminos diferentes que puede tomar un codigo al ejecutarse
 #                                   PRUEBAS DE SOFTWARE: Al menos cuantas pruebas debo realizar a mi programa? 
@@ -129,7 +133,46 @@ print("Acabamos")
 # > 18 y < 65
 # <= 18
 
+# Como definir nuestras propias funciones dentro de python < PROGRAMACION PROCEDURAL
+
+                                 # Valor por defecto si no me dicen nada de exclamaciones
+def saluda(nombre="Amigo", exclamaciones=True):
+    if exclamaciones:
+        print("HOLA "+nombre+" !!!!")
+    else:
+        print("HOLA "+nombre)
+
+
+saluda("Ivan")
+saluda("Iria", False)
+saluda("Carlos", True)
+saluda("Albert")
+saluda()
+saluda(exclamaciones=False)
+saluda(exclamaciones=False, nombre="Lucas")
+# Todos los valores que pase con valor por defecto, los puedo pasar mediante un nombre identificativo, 
+# saltandome el orden normal de suministro de parametros
+
+def mifuncion(arg1, arg2, arg3="Tengo valor por defecto", arg4="Yo también tengo valor por defecto"):
+    print(arg1)
+    print(arg2)
+    print(arg3)
+    print(arg4)
+
+mifuncion("HOLA","AMIGO",arg4="COMO",arg3="ESTAS?")
 # BUCLES
 
 
+def doblar(numero):
+    return numero*2
 
+print( doblar(10) )
+
+el_doble_de_5 = doblar(5)
+print(el_doble_de_5)
+
+
+resultado= doblar(5) + 7
+print(resultado)
+
+# BASH
