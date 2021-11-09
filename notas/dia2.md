@@ -24,7 +24,6 @@ else:
     HAGO OTRA COSA DIFERENTE
     
     
-
 if condicion1:
     HAGO UNA COSA
 else if CONDICION2:
@@ -40,3 +39,9 @@ Complejidad cognitiva?   Cómo de dificil o fácil es entender un código por un
 REFACTORIZAR:
     Tarea que hacemos después de tener un programa en funcionamiento...
     Le dedicamos un ratito a ver si puedo reescribir aquello de forma que quede más DECENTE
+    
+    
+Estás seguro que quieres reiniciar el servidor (si|no) [si]? 
+
+Si recibo otra cosa... Le avisaré que la respues no es válida... y pregunto de nuevo
+
