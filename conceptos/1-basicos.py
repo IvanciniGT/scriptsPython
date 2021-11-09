@@ -85,6 +85,17 @@ not True         #   False
 "HOLA" + "AMIGO"   # Operador concatenar   "HOLAAMIGO"
 "HOLA" * 3         # "HOLAHOLAHOLA"
 
+# Operadores de asignacion
+variable=3
+variable+=3 # Variable= 6 
+variable-=3 # Variable= 0
+variable*=3 # Variable= 9 
+variable/=3 # Variable= 1 
+
+texto="HOLA"
+texto+=" AMIGO" # texto= "HOLA AMIGO"
+
+
 # Funciones básicas definidas por python
 print("HOLA AMIGO")     # Para ejcutar una funcion, debo llamarla con unos parentesis detrás. 
                         # Si la función admite o requiere argumentos, se incluirian dentro de los parentesis

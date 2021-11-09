@@ -14,6 +14,9 @@ print("Quiero los tres primeros elementos                  "  +  str(       tupl
 print("Quiero los tres últimos elementos                   "  +  str(       tuplaA[2:]      )) # El hasta no se incluye
 print("Quiero los tres últimos elementos                   "  +  str(       tuplaA[-3:]      )) # El hasta no se incluye
 
+print(   2 in tuplaA  )  # Operador lógico   TRUE
+print(   7 in tuplaA  )  # Operador lógico   FALSE
+
 print( tuplaA * 5 )
 
 texto="HOLA AMIGO"

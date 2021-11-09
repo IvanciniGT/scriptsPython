@@ -1,9 +1,18 @@
 
-def sinput(pregunta, intentos=1, valor_por_defecto=None, respuestas_posibles):
+def sinput(pregunta, intentos=1, valor_por_defecto=None, respuestas_posibles=None):
     valor_a_devolver=None
     
     # Voy a preparar la pregunta a mostrar al usuario
     texto_a_preguntar=pregunta
+    # Añadir los valores posibles, si existen
+    if respuestas_posibles is not None:
+        texto_a_preguntar+=" ("
+        for respuesta_posible in respuestas_posibles:
+            texto_a_preguntar+=respuesta_posible+"|"
+        # Se que me queda una barrita de más
+        texto_a_preguntar=texto_a_preguntar[:-1]+")"
+        
+    # Añadir el valor por defecto a la pregunta si existe
     if valor_por_defecto is not None:
         texto_a_preguntar=texto_a_preguntar+" ["+valor_por_defecto+"]" 
     texto_a_preguntar=texto_a_preguntar+"? "
@@ -17,15 +26,19 @@ def sinput(pregunta, intentos=1, valor_por_defecto=None, respuestas_posibles):
         # Si el usuario al preguntarle SOLO PULSA ENTER, la variable valor_del_usuario contendrá un texto vacio: ""
         # Comprobar si se ha escrito algo
         if len(valor_del_usuario) > 0:
-            # Si se ha escrito algo,  lo devuelvo
-            valor_a_devolver=valor_del_usuario
+            # Si el usuario ha escrito algo
+            # Si hay respuestas posibles, tendria que mirar si el valor que me ha dado el usuario
+            # está dentro de los permitidos
+            if respuestas_posibles is not None and valor_del_usuario not in respuestas_posibles:
+                print("El valor introducido '"+valor_del_usuario+"' no es válido.")
+            else:
+                # Todo está bien, ya tengo valor. EUREKA !!!
+                valor_a_devolver=valor_del_usuario
         elif valor_por_defecto is not None:
             # Si no ha escrito nada y hay un valor por defecto, devuelvo el valor por defecto
             valor_a_devolver=valor_por_defecto
-        else:
-            # Si no se ha escrito nada, y no hay valor por defecto vuelvo a preguntar... 
-            # mientras le queden reintentos
-            intentos=intentos - 1
+        # Le quito un intento
+        intentos=intentos - 1
     return valor_a_devolver
         
     # No sale el valor por defecto en el prompt
@@ -41,6 +54,7 @@ servicio=sinput("Que servicio desea reiniciar",
 print(servicio)
 
 reinicio=sinput("Estás seguro que quieres reiniciar el servidor", 
+                    intentos=3,
                     valor_por_defecto="si", 
                     respuestas_posibles=('si','no') 
                 )
