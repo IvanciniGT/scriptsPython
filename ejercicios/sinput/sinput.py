@@ -1,5 +1,5 @@
 
-def sinput(pregunta, intentos=1, valor_por_defecto=None, respuestas_posibles=None):
+def sinput(pregunta, intentos=1, valor_por_defecto=None, respuestas_posibles=None, patron_validacion=None):
     valor_a_devolver=None
     
     # Voy a preparar la pregunta a mostrar al usuario
@@ -44,7 +44,8 @@ def sinput(pregunta, intentos=1, valor_por_defecto=None, respuestas_posibles=Non
     # No sale el valor por defecto en el prompt
 
 nombre=sinput("Como se llama el servidor que quieres reiniciar", 
-                    valor_por_defecto="localhost"
+                    valor_por_defecto="localhost",
+                    patron_validacion="^[a-z0-9.-]+$"
              )
 print(nombre)
 
