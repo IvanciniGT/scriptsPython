@@ -1,26 +1,34 @@
 
-def sinput(pregunta, intentos, valor_por_defecto="NADA"):
-    
+def sinput(pregunta, intentos=1, valor_por_defecto=None):
+    valor_a_devolver=None
     # Voy a intentar sacar un valor del usuario...
-    # Para ello, mientras le queden reintentos disponibles, le preguntaré por un valor
-    while intentos > 0:
-        valor_del_usuario=input(pregunta)
+    # Para ello, mientras le queden reintentos disponibles y no haya conseguido yo un valor
+    # le preguntaré por un valor
+    while intentos > 0 and valor_a_devolver is None:
+        valor_del_usuario=input(pregunta+"? ")
+        # Si el usuario al preguntarle SOLO PULSA ENTER, la variable valor_del_usuario contendrá un texto vacio: ""
         # Comprobar si se ha escrito algo
         if len(valor_del_usuario) > 0:
-            # Si se ha escrito algo, que hago? lo devuelvo
-            return valor_del_usuario
+            # Si se ha escrito algo,  lo devuelvo
+            valor_a_devolver=valor_del_usuario
+        elif valor_por_defecto is not None:
+            # Si no ha escrito nada y hay un valor por defecto, devuelvo el valor por defecto
+            valor_a_devolver=valor_por_defecto
         else:
-            # Si no se ha escrito nada, vuelvo a preguntar... mientras le queden reintentos
+            # Si no se ha escrito nada, y no hay valor por defecto vuelvo a preguntar... 
+            # mientras le queden reintentos
             intentos=intentos - 1
-    
-    
-nombre=sinput("Como se llama el servidor que quieres reiniciar? ",3 , "localhost")
+    return valor_a_devolver
+        
+    # No sale el valor por defecto en el prompt
+
+nombre=sinput("Como se llama el servidor que quieres reiniciar", valor_por_defecto="localhost")
 print(nombre)
 
-servicio=sinput("Que servicio desea reiniciar? ",3 )
+servicio=sinput("Que servicio desea reiniciar", intentos=3 )
 print(servicio)
 
-reinicio=sinput("Estás seguro que quieres reiniciar el servidor? ",2 , "si")
+reinicio=sinput("Estás seguro que quieres reiniciar el servidor", valor_por_defecto="si")
 print(reinicio)
 
 
