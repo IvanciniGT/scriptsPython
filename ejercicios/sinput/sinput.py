@@ -1,3 +1,4 @@
+import re 
 
 def sinput(pregunta, intentos=1, valor_por_defecto=None, respuestas_posibles=None, patron_validacion=None):
     valor_a_devolver=None
@@ -27,9 +28,14 @@ def sinput(pregunta, intentos=1, valor_por_defecto=None, respuestas_posibles=Non
         # Comprobar si se ha escrito algo
         if len(valor_del_usuario) > 0:
             # Si el usuario ha escrito algo
+            
             # Si hay respuestas posibles, tendria que mirar si el valor que me ha dado el usuario
             # está dentro de los permitidos
             if respuestas_posibles is not None and valor_del_usuario not in respuestas_posibles:
+                print("El valor introducido '"+valor_del_usuario+"' no es válido.")
+            
+            # Si hay un patron, debemos validarlo
+            elif patron_validacion is not None and not re.match(patron_validacion, valor_del_usuario):
                 print("El valor introducido '"+valor_del_usuario+"' no es válido.")
             else:
                 # Todo está bien, ya tengo valor. EUREKA !!!
@@ -42,23 +48,4 @@ def sinput(pregunta, intentos=1, valor_por_defecto=None, respuestas_posibles=Non
     return valor_a_devolver
         
     # No sale el valor por defecto en el prompt
-
-nombre=sinput("Como se llama el servidor que quieres reiniciar", 
-                    valor_por_defecto="localhost",
-                    patron_validacion="^[a-z0-9.-]+$"
-             )
-print(nombre)
-
-servicio=sinput("Que servicio desea reiniciar", 
-                    intentos=3 
-                )
-print(servicio)
-
-reinicio=sinput("Estás seguro que quieres reiniciar el servidor", 
-                    intentos=3,
-                    valor_por_defecto="si", 
-                    respuestas_posibles=('si','no') 
-                )
-print(reinicio)
-
 
