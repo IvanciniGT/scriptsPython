@@ -91,3 +91,15 @@ Quiero probar un servicio:
 CASTELLANO: Que url tiene el servicio que se prueba en la prueba 178?
 PYTHON:     Prueba 178.Servicio.url
 
+Servidor WeblogicProd1
+    IP: 172.59.0.17
+
+PruebaPing 198:
+    Servidor WeblogicProd1
+    timeout     3000
+    numero de intentos    5
+    
+
+Listado de todas mis pruebas de ping
+
+
