@@ -32,26 +32,15 @@ def opcionD():
 
 
 def menu( funciones_posibles ):
+    print("Titulos....")
     numero=input("Dame numero: ")
     
     opcion=int(numero)-1
     
     funciones_posibles[opcion]()
 
-
 funciones=(opcionA, opcionB, opcionC, opcionD)
 menu( funciones )
-
-
-
-
-
-
-
-
-
-
-
 
 
 
