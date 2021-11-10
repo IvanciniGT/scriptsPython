@@ -45,3 +45,49 @@ Servicio
         iniciar
         parar
         consultarSuEstado
+------------------- CLASES
+Vamos a trabajar con Servicios WEB
+    NOMBRE????
+        URL: ????
+        metodos: ????
+Vamos a atrabajr con Pruebas sobre Servicios WEB
+    Servicio: ????
+    Metodo: ???
+    Timeout: ????
+    codigo: ???
+Resultado
+    resultado: OK KO  ?????
+    Respuesta   ?????
+    Tiempo de respuesta ?????
+    Código que ha devuelto  ???
+    Timestamp   ????
+-------------------  INSTANCIAS CONCRETAS        
+Tengo un servicio web
+    Servicio GOOGLE:
+        URL: https://google.es
+        metodos: GET, POST, PUT
+
+Quiero probar un servicio:
+    Prueba 177:
+        Servicio GOOGLE
+        metodo:  get
+        timeout: 2000
+        codigo:  200
+
+Quiero probar un servicio:
+    Prueba 178:
+        Servicio: GOOGLE
+        metodo:  post
+        timeout: 4000
+        codigo: 405
+        
+        ---> ejecutar -> Resultado
+                            OK KO
+                            Respuesta
+                            Tiempo de respuesta
+                            Código que ha devuelto
+                            Timestamp
+
+CASTELLANO: Que url tiene el servicio que se prueba en la prueba 178?
+PYTHON:     Prueba 178.Servicio.url
+
