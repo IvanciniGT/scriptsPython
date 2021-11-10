@@ -39,13 +39,9 @@ from threading import Thread
 
 class Contador(Thread):
     
-    # VAriable a nivel de la clase
-    conteo_cancelado_para_todos=False
-    
     @classmethod
     def queParenTodos(cls):
         # A quien aplicaría? A un Contador
-        Contador.conteo_cancelado_para_todos=True
     
     def __init__(self, nombre,hasta_que_numero, pausa):
         super().__init__()
@@ -53,7 +49,7 @@ class Contador(Thread):
         self.hasta_que_numero=hasta_que_numero
         self.pausa=pausa
         self.conteo_cancelado=False
-
+    
     def contar(self):
         self.start()
     
@@ -63,7 +59,7 @@ class Contador(Thread):
     
     def run(self):
         for num in range(1,self.hasta_que_numero+1):
-            if self.conteo_cancelado or Contador.conteo_cancelado_para_todos:
+            if self.conteo_cancelado:
 #           if self.conteo_cancelado == True:
                 break
             print("Soy el contador "+self.nombre+" voy por el número:" + str(num) )
