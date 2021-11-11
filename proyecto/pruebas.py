@@ -19,9 +19,9 @@ class PruebaPing(Prueba):
         for ip in self.servidor.ips:
             resultado=False
             for intento in range(0,self.intentos):
-                resultado = ping(ip, self.timeout)
+                resultado, info_extra = ping(ip, self.timeout)
                 if resultado: 
                     break
             # Llegados a este punto habria hecho los intento que me han dicho para conseguir un ping satisfactorio
-            # Y te go el resultado en una variable TRUE | FALSE
-            
+            # Y tengo el resultado en una variable TRUE | FALSE
+            resultado_ejecucion_prueba = ResultadoPruebaPing( resultado, info_extra )
