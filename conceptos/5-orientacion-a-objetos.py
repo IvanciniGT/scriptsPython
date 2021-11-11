@@ -11,7 +11,7 @@ class Servidor:
     # Le explica a python cómo se crean Servicios
                     #    "Google","https://google.es/"
                     #        V       V
-    def __init__(self, un_nombre, unas_ips ):
+    def __init__(self, un_nombre, unas_ips ): # Constructor
         self.nombre=un_nombre
         self.ips=unas_ips
 

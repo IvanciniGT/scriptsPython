@@ -2,7 +2,7 @@ from subprocess import run, PIPE
 import platform     # Obtener información del SO donde estamos corriendo el programa
 
 
-def ping(servidor):
+def ping(servidor, timeout):
     parametro="-n" if platform.system().upper() == "WINDOWS" else "-c"
     comando=( "ping" , parametro , "1", servidor )
     resultado_de_su_ejecucion=run( comando , stdout=PIPE , stderr=PIPE)
