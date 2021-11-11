@@ -1,4 +1,5 @@
 from ping import ping
+from resultadopruebas import ResultadoPruebaPing
 
 class Prueba:
     def __init__(self,nombre, timeout):
@@ -16,6 +17,7 @@ class PruebaPing(Prueba):
         self.intentos=intentos
 
     def ejecutar(self):    
+        resultados=[]
         for ip in self.servidor.ips:
             resultado=False
             for intento in range(0,self.intentos):
@@ -24,4 +26,6 @@ class PruebaPing(Prueba):
                     break
             # Llegados a este punto habria hecho los intento que me han dicho para conseguir un ping satisfactorio
             # Y tengo el resultado en una variable TRUE | FALSE
-            resultado_ejecucion_prueba = ResultadoPruebaPing( resultado, info_extra )
+            resultados.append( ResultadoPruebaPing( resultado, info_extra, self.servidor, ip) )
+        return resultados
+            

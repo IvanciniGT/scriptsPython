@@ -1,5 +1,5 @@
 from servidor import Servidor
-
+from pruebas import PruebaPing
 servidores={}
 
 servidor_google = Servidor("Google",("google.es",) )
@@ -29,6 +29,8 @@ pruebas_ping[prueba_ping_servidor_googlecito.servidor.nombre]=prueba_ping_servid
 
 
 # Lanzar la ejecución de todos los pings
+print( prueba_ping_servidor_google.ejecutar() )
+print ( prueba_ping_servidor_googlecito.ejecutar() )
     # Paralelo
 
 # Una vez terminada la ejecuión de todas las pruebas, mostraremos un informe por consola
