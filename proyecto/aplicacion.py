@@ -1,25 +1,25 @@
 from servidor import Servidor
 from pruebas import PruebaPing
 from ejecutores import PoolDeEjecutores
-servidores={}
-
-servidor_google = Servidor("Google",("google.es",) )
-servidores[servidor_google.nombre] = servidor_google
-
-servidor_googlecito = Servidor("Googlecito",("googlecito.es",) )
-servidores[servidor_googlecito.nombre] = servidor_googlecito
+import yaml
 
 NUMERO_INTENTOS_PING=5
 TIMEOUT_PING=1000
 
+servidores={}
 pruebas_ping={}
 
-prueba_ping_servidor_google = PruebaPing(servidor_google,NUMERO_INTENTOS_PING,TIMEOUT_PING)
-pruebas_ping[prueba_ping_servidor_google.servidor.nombre]=prueba_ping_servidor_google
+with open ("servers.yaml","r") as fichero_yaml:
+    contenido=yaml.load(fichero_yaml, Loader=yaml.FullLoader)
+    
+for diccionario_servidor in contenido["servers"]:
+    nuevo_servidor = Servidor( diccionario_servidor["name"]  , diccionario_servidor["ips"] )
+    servidores[nuevo_servidor.nombre] = nuevo_servidor
 
-prueba_ping_servidor_googlecito = PruebaPing(servidor_googlecito,NUMERO_INTENTOS_PING,TIMEOUT_PING)
-pruebas_ping[prueba_ping_servidor_googlecito.servidor.nombre]=prueba_ping_servidor_googlecito
+    prueba_ping = PruebaPing(nuevo_servidor,NUMERO_INTENTOS_PING,TIMEOUT_PING)
+    pruebas_ping[prueba_ping.servidor.nombre]=prueba_ping
 
+##
 pool_ejecutor= PoolDeEjecutores(5, list(pruebas_ping.values()), "ejecutar")
 pool_ejecutor.comenzarTrabajos()
 
