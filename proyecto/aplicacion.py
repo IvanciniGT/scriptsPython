@@ -1,32 +1,23 @@
-from servidor import Servidor
-from pruebas import PruebaPing
-from ejecutores import PoolDeEjecutores
-import yaml
+from utilidades import cargarServidores, crearPruebasDePing, ejecutarPruebasDePing, imprimirResultadosPruebasPing
 
-NUMERO_INTENTOS_PING=5
-TIMEOUT_PING=1000
+# python3 aplicacion.py --servers-file FICHERO --ping-timeout 1000 --ping-retries 5
+# python3 aplicacion.py -f FICHERO -t 1000 -r 5
+# python3 aplicacion.py  -t 1000 -r 5 -f FICHERO
 
-servidores={}
-pruebas_ping={}
+import sys
 
-with open ("servers.yaml","r") as fichero_yaml:
-    contenido=yaml.load(fichero_yaml, Loader=yaml.FullLoader)
-    
-for diccionario_servidor in contenido["servers"]:
-    nuevo_servidor = Servidor( diccionario_servidor["name"]  , diccionario_servidor["ips"] )
-    servidores[nuevo_servidor.nombre] = nuevo_servidor
+print(sys.argv)
 
-    prueba_ping = PruebaPing(nuevo_servidor,NUMERO_INTENTOS_PING,TIMEOUT_PING)
-    pruebas_ping[prueba_ping.servidor.nombre]=prueba_ping
+FICHERO=None
 
-##
-pool_ejecutor= PoolDeEjecutores(5, list(pruebas_ping.values()), "ejecutar")
-pool_ejecutor.comenzarTrabajos()
+posicion_argumento=1
+while posicion_argumento< len(sys.argv):
+    if sys.argv[posicion_argumento] == "-f" or  sys.argv[posicion_argumento] == "--servers-file":
+        FICHERO=sys.argv[posicion_argumento+1]
+        posicion_argumento+=1
+    posicion_argumento+=1
 
-# Cuando termine el resto de hilos
-pool_ejecutor.avisaCuandoAcabes()
-print("Pruebas finalizadas")
-
-# Imprimir los resultados
-for prueba in pruebas_ping.values():
-    print(prueba.resultados_ejecuciones[-1])
+servidores = cargarServidores(FICHERO)
+pruebas_ping = crearPruebasDePing(list(servidores.values()),5,1000)
+ejecutarPruebasDePing(list(pruebas_ping.values()))
+imprimirResultadosPruebasPing(list(pruebas_ping.values()))
