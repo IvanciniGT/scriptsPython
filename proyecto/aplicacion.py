@@ -1,5 +1,6 @@
 from servidor import Servidor
 from pruebas import PruebaPing
+from ejecutores import PoolDeEjecutores
 servidores={}
 
 servidor_google = Servidor("Google",("google.es",) )
@@ -20,16 +21,11 @@ prueba_ping_servidor_googlecito = PruebaPing(servidor_googlecito,NUMERO_INTENTOS
 pruebas_ping[prueba_ping_servidor_googlecito.servidor.nombre]=prueba_ping_servidor_googlecito
 
 
-# Lanzar la ejecución de todos los pings
-print( prueba_ping_servidor_google.ejecutar() )
-print( prueba_ping_servidor_googlecito.ejecutar() )
+pool_ejecutor= PoolDeEjecutores(5, list(pruebas_ping.values()), "ejecutar")
+pool_ejecutor.comenzarTrabajos()
 
-lista_pruebas_a_ejecutar=list(pruebas_ping.values())
+# Cuando termine el resto de hilos
+pool_ejecutor.avisaCuandoAcabes()
+print("Pruebas finalizadas")
 
-Ejecutores
-una_prueba=lista_pruebas_a_ejecutar.pop()
-# Paralelo
-    #¿Cuantos servidores tenemos? 2 -> 20000
-    # Vamos a implentar un pool de hilos
-
-# Una vez terminada la ejecuión de todas las pruebas, mostraremos un informe por consola
+# Imprimir los resultados
