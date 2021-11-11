@@ -1,0 +1,42 @@
+#Nodo Escalares. Nodos simples:
+3
+---
+5.8
+---
+-.Inf
+---
+"hola amigo"
+---
+hola amigo
+---
+'hola amigo'
+---
+True
+---
+false
+---
+TRUE
+---
+~   # Nulo
+---
+!!null
+---
+98
+---
+70
+---
+# Listas
+- 98
+- True
+- 10
+---
+# Mapas < Diccionarios
+clave1: !!str "hola"
+clave2: !!int 70
+clave3: 
+    - 10
+    - hola
+    - clave3.1: una cosa
+      clave3.2: otra cosa
+---
+!!Servidor(nombre: Google.es, ips: [google.es])

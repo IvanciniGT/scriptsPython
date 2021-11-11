@@ -20,7 +20,6 @@ pruebas_ping[prueba_ping_servidor_google.servidor.nombre]=prueba_ping_servidor_g
 prueba_ping_servidor_googlecito = PruebaPing(servidor_googlecito,NUMERO_INTENTOS_PING,TIMEOUT_PING)
 pruebas_ping[prueba_ping_servidor_googlecito.servidor.nombre]=prueba_ping_servidor_googlecito
 
-
 pool_ejecutor= PoolDeEjecutores(5, list(pruebas_ping.values()), "ejecutar")
 pool_ejecutor.comenzarTrabajos()
 
@@ -29,3 +28,5 @@ pool_ejecutor.avisaCuandoAcabes()
 print("Pruebas finalizadas")
 
 # Imprimir los resultados
+for prueba in pruebas_ping.values():
+    print(prueba.resultados_ejecuciones[-1])

@@ -35,12 +35,16 @@ class Ejecutor(Thread):
         
     def run(self):
         while True:
+            una_tarea_a_ejecutar= None
             try:
-                una_tarea_a_ejecutar=self.lista_tareas.pop()
-                # Ejecutar la tarea
-                                            # Me permite recuperar la referencia a una función
-                                            # de un objeto a través de su nombre
-                referencia_funcion_a_ejecutar=getattr(una_tarea_a_ejecutar, self.funcion_a_ejecutar)
-                referencia_funcion_a_ejecutar()            
+                if len (self.lista_tareas) != 0 
+                    una_tarea_a_ejecutar=self.lista_tareas.pop()
             except IndexError:
                 return 
+            else:
+                if una_tarea_a_ejecutar is not None:
+                    # Ejecutar la tarea
+                                                # Me permite recuperar la referencia a una función
+                                                # de un objeto a través de su nombre
+                    referencia_funcion_a_ejecutar=getattr(una_tarea_a_ejecutar, self.funcion_a_ejecutar)
+                    referencia_funcion_a_ejecutar()            

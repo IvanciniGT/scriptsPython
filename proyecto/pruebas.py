@@ -5,6 +5,7 @@ class Prueba:
     def __init__(self,nombre, timeout):
         self.nombre=nombre
         self.timeout=timeout
+        self.resultados_ejecuciones=[]
     
     def ejecutar(self):
         pass 
@@ -27,5 +28,6 @@ class PruebaPing(Prueba):
             # Llegados a este punto habria hecho los intento que me han dicho para conseguir un ping satisfactorio
             # Y tengo el resultado en una variable TRUE | FALSE
             resultados.append( ResultadoPruebaPing( resultado, info_extra, self.servidor, ip) )
+        self.resultados_ejecuciones.append(resultados)
         return resultados
             
