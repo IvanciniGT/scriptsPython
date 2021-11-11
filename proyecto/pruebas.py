@@ -15,8 +15,8 @@ class PruebaPing(Prueba):
         super().__init__("Prueba de ping sobre el servidor "+servidor.nombre, timeout)
         self.servidor=servidor
         self.intentos=intentos
-
-    def ejecutar(self):    
+    
+    def ejecutar(self):
         resultados=[]
         for ip in self.servidor.ips:
             resultado=False
