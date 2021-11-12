@@ -1,2 +1,10 @@
-!!python/object:__main__.Prueba
-numero: 7
+servers:
+- ips:
+  - google.es
+  name: Google
+- ips:
+  - googlecito.es
+  name: Googlecito
+- ips:
+  - facebook.es
+  name: Facebook

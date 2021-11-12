@@ -5,10 +5,3 @@ servers:
     - name: Googlecito
       ips:
         - googlecito.es
-#---
-#servidores:
-#    - Google:
-#        - google.es
-#    - Googlecito:
-#        - googlecito.es
-#---
