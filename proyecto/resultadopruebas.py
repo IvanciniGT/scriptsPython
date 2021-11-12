@@ -1,4 +1,5 @@
 from datetime import datetime
+from jinja2 import Template
 
 class ResultadoPrueba:
     def __init__(self,resultado ,info_extra):
@@ -16,10 +17,17 @@ class ResultadoPruebaPing(ResultadoPrueba):
         return self.__str__()
         
     def __str__(self):   # Convertirlo a un texto
-        representacion="Resultado de una prueba de ping:\n"
-        representacion+="  Fecha/Hora:     "+str(self.timestamp)+"\n"
-        representacion+="  Servidor:       "+self.servidor.nombre+"\n"
-        representacion+="  IP:             "+self.ip+"\n"
-        representacion+="  Resultado:      "+("OK" if self.resultado else "NOK")+"\n"
-        representacion+="  Observaciones:  "+str(self.info_extra)+"\n"
-        return representacion
+    
+        with open("resultado_ping.j2", "r") as archivo_plantilla:
+            contenido_de_la_plantilla=archivo_plantilla.read()
+        plantilla = Template( contenido_de_la_plantilla )
+        return plantilla.render( { "resultado_prueba": self } )
+
+    
+#        representacion="Resultado de una prueba de ping:\n"
+#        representacion+="  Fecha/Hora:     "+str(self.timestamp)+"\n"
+#        representacion+="  Servidor:       "+self.servidor.nombre+"\n"
+#        representacion+="  IP:             "+self.ip+"\n"
+#        representacion+="  Resultado:      "+("OK" if self.resultado else "NOK")+"\n"
+#        representacion+="  Observaciones:  "+str(self.info_extra)+"\n"
+#        return representacion

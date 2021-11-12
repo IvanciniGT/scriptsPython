@@ -1,0 +1,10 @@
+Resultado de una prueba de ping:
+  Fecha/Hora:     {{ resultado_prueba.timestamp }}
+  Servidor:       {{ resultado_prueba.servidor.nombre }}
+  IP:             {{ resultado_prueba.ip }}
+{%- if resultado_prueba.resultado %}  
+  Resultado:      OK
+{%- else %}  
+  Resultado:      NOK
+{%- endif %}  
+  Observaciones:  {{ resultado_prueba.info_extra }}

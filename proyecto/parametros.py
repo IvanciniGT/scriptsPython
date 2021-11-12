@@ -37,6 +37,9 @@ class Parametros:
             posicion_argumento+=1
         
         
+        if parametros["FICHERO"] is None:
+            print("No ha suministrado el fichero de servidores.")
+            exit(3)
         # Asegurarnos que el fichero existe
         if not os.path.exists(parametros["FICHERO"]):
             print("El fichero de servidores no existe. Reviselo!")
