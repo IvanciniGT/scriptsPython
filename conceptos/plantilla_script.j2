@@ -1,0 +1,10 @@
+#!/bin/bash
+
+{% for servicio in servicios %}
+SALIDA=$( systemctl status {{ servicio | lower }} | grep -c "active (running)" )
+
+if [[ $SALIDA == 0 ]]; then
+    echo El servicio {{ servicio }} no está disponible
+    exit 1
+fi
+{% endfor %}
