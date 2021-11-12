@@ -1,10 +1,13 @@
 import yaml 
+from parametros import Parametros
+
 class Servidor:
 
     servidores={}
 
     @classmethod
-    def cargarServidores(cls, fichero):
+    def cargarServidores(cls):
+        fichero=Parametros.parametros["FICHERO"]
         with open (fichero,"r") as fichero_yaml:
             contenido=yaml.load(fichero_yaml, Loader=yaml.FullLoader)
         for diccionario_servidor in contenido["servers"]:
