@@ -2,15 +2,8 @@ from servidor import Servidor
 from pruebas import PruebaPing
 from ejecutores import PoolDeEjecutores
 import yaml
-
-def cargarServidores(fichero):
-    servidores={}
-    with open (fichero,"r") as fichero_yaml:
-        contenido=yaml.load(fichero_yaml, Loader=yaml.FullLoader)
-    for diccionario_servidor in contenido["servers"]:
-        nuevo_servidor = Servidor( diccionario_servidor["name"]  , diccionario_servidor["ips"] )
-        servidores[nuevo_servidor.nombre] = nuevo_servidor
-    return servidores
+import sys
+import os
 
 def crearPruebasDePing(servidores,NUMERO_INTENTOS_PING,TIMEOUT_PING):
     pruebas_ping={}
@@ -28,7 +21,7 @@ def imprimirResultadosPruebasPing(listado_pruebas):
     for prueba in listado_pruebas:
         print(prueba.resultados_ejecuciones[-1])
         
-def capturaParametros():
+def cargarParametros():
     parametros={"FICHERO":None, "PING_RETRIES": 5, "PING_TIMEOUT": 1000}
     posicion_argumento=1
     while posicion_argumento< len(sys.argv):
